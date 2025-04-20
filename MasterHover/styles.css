@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* vp center */
+    background-color: rgb(32, 26, 26);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap; /* straight line */
+}
+
+.container{
+    transform-style: preserve-3d;
+    transform : perspective(1000px);
+}
+.container .item img {
+    width: 80px;  /* small img */
+    height: auto;
+}
+
+
+.container .item{
+    transition: .5s;
+    filter: brightness(0);
+}
+.container .item:hover{
+    filter: brightness(1);
+    transform: translateZ(200px);
+}
+
+.container .item:hover + .item{
+    filter: brightness(0.6);
+    transform:translateZ(150px) rotateY(40deg);
+}
+
+.container .item:hover + * + *{
+    filter:brightness(0.4);
+    transform: translateZ(70px) rotateY(20deg);
+}
+
+.container .item:hover + * + * + *{
+    filter: brightness(0.2);
+    transform:translateZ(35px) rotateY(10deg);
+}
+
+.container .item:has(+ *:hover){
+    /*element being hovered (for left side of the images)*/
+    filter:brightness(0.6);
+    transform: translateZ(150px) rotateY(-40deg);
+}
+
+.container .item:has(+*+*:hover){
+    filter:brightness(0.4);
+    transform: translateZ(70px) rotateY(-20deg);
+}
+
+.container .item:has(+*+*+*:hover){
+    filter: brightness(0.2);
+    transform:translateZ(35px) rotateY(-10deg);
+}
