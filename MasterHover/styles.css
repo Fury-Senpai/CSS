@@ -21,7 +21,7 @@ body {
     transform : perspective(1000px);
 }
 .container .item img {
-    width: 80px;  /* small img */
+    width: 80px;  /* small img resize */
     height: auto;
 }
 
